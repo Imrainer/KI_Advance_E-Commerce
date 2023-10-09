@@ -1,4 +1,4 @@
-<x-layout title="Profil | Jelajah Nusantara">
+<x-layout title="Profil | E-Commerce">
 <x-navbar></x-navbar>
 
 <style>
@@ -37,7 +37,7 @@ body{
    <img src="{{ asset('storage/'. $data->photo) }}" alt="Profile Picture" width="300px" class="me-3 profil rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"></div> 
     @endif
 <div class="ms-3 ">
-    <form action="http://localhost/laravel_katalogue/public/profile/edit-store" method="POST">
+    <form action="http://localhost/laravel_E-Commerce/public/profile/edit-store" method="POST">
         @csrf @method('put')
         <div class="mb-3 mt-3">
             <label for="exampleInputEmail1" class="title form-label">Nama</label>
@@ -70,7 +70,7 @@ body{
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="http://localhost/laravel_katalogue/public/profile/edit-photo" method="POST" enctype="multipart/form-data">
+            <form action="http://localhost/laravel_E-Commerce/public/profile/edit-photo" method="POST" enctype="multipart/form-data">
                 @csrf @method('put')
             <div class="mb-3 mt-3">
                 

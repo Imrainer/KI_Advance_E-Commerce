@@ -1,4 +1,4 @@
-<x-layout title="Dashboard | Jelajah Nusantara">
+<x-layout title="Dashboard | E-Commerce">
  
 <div class="d-flex">
 <x-Sidebar photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>
@@ -13,7 +13,7 @@
       </div>    
       <div class="modal-body">
       
-        <form action="http://localhost/laravel_katalogue/public/user/add-user" method="POST">
+        <form action="http://localhost/laravel_E-Commerce/public/user/add-user" method="POST">
           @csrf
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Nama</label>
@@ -62,7 +62,7 @@
 
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-success mb-1 mt-3"><i class="fas fa-user-plus"></i> Add New</button>
     
-    <form action="http://localhost/laravel_katalogue/public/dashboard" method="GET" class="col-md-9 mt-3">
+    <form action="http://localhost/laravel_E-Commerce/public/dashboard" method="GET" class="col-md-9 mt-3">
       <div class="mb-3 d-flex">
         <i class="fas fa-search mt-2 me-3"></i>
         <input type="search" name="search" class="form-control col-md-5" placeholder="Type here">
@@ -97,8 +97,8 @@
             <td> <img src="{{ asset ('storage/' . $item->photo) }}"  class="rounded-circle" width="40px" alt="Foto Profil "></td>
             @endif
             <td>
-            <a href="http://localhost/laravel_katalogue/public/user/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
-            <a href="http://localhost/laravel_katalogue/public/user/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
+            <a href="http://localhost/laravel_E-Commerce/public/user/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
+            <a href="http://localhost/laravel_E-Commerce/public/user/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
             <td>
           </tr>
           @endforeach

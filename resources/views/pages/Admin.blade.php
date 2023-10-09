@@ -1,4 +1,4 @@
-<x-layout title="Admin | Jelajah Nusantara">
+<x-layout title="Admin | E-Commerce">
     <div class="d-flex">
     <x-Sidebar  photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>
 
@@ -12,7 +12,7 @@
       </div>    
       <div class="modal-body">
       
-        <form action="http://localhost/laravel_katalogue/public/admin/add-admin" method="POST">
+        <form action="http://localhost/laravel_E-Commerce/public/admin/add-admin" method="POST">
           @csrf
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Nama</label>
@@ -62,7 +62,7 @@
 
         <button data-bs-toggle="modal" data-bs-target="#createadmin" class="btn btn-outline-success mb-1 mt-3"><i class="fas fa-users"></i>+ Add New</button>
         
-        <form action="http://localhost/laravel_katalogue/public/admin" method="GET" class="col-md-9 mt-3">
+        <form action="http://localhost/laravel_E-Commerce/public/admin" method="GET" class="col-md-9 mt-3">
         <div class="mb-3 d-flex">
           <i class="fas fa-search mt-2 me-3"></i>
           <input type="search" name="search" class="form-control col-md-5"placeholder="Type here">
@@ -94,8 +94,8 @@
                 <td> <img src="{{ asset ('storage/' . $item->photo) }}"  class="rounded-circle" width="40px" alt="Foto Profil "></td>
                 @endif
                 <td>
-                <a href="http://localhost/laravel_katalogue/public/admin/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
-                <a href="http://localhost/laravel_katalogue/public/admin/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
+                <a href="http://localhost/laravel_E-Commerce/public/admin/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
+                <a href="http://localhost/laravel_E-Commerce/public/admin/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
                 <td>
               </tr>
               @endforeach

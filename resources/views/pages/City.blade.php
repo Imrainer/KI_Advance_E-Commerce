@@ -1,4 +1,4 @@
-<x-layout title="City | Jelajah Nusantara">
+<x-layout title="City | E-Commerce">
  
     <div class="d-flex">
     <x-Sidebar photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>

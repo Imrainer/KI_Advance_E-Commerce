@@ -1,8 +1,8 @@
-<x-layout title="Edit Admin | Jelajah Nusantara">
+<x-layout title="Edit Admin | E-Commerce">
    
     <div class="container col-md-5">
       @foreach ( $data as $item)
-      <form action="http://localhost/laravel_katalogue/public/admin/edit-store/{{$data->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
+      <form action="http://localhost/laravel_E-Commerce/public/admin/edit-store/{{$data->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
         @csrf @method('put')
         @endforeach
         <h3> Form Edit Admin </h3>

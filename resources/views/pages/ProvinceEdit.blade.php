@@ -1,4 +1,4 @@
-<x-layout title="Edit Province | Jelajah Nusantara">
+<x-layout title="Edit Province | E-Commerce">
    
     <div class="container col-md-5">
       @foreach ( $province as $item)

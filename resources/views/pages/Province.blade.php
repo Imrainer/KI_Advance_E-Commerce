@@ -1,4 +1,4 @@
-<x-layout title="Province | Jelajah Nusantara">
+<x-layout title="Province | E-Commerce">
  
 <div class="d-flex">
 <x-Sidebar photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>

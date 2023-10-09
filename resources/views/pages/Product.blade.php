@@ -1,4 +1,4 @@
-<x-layout title="Category | E-Commerce">
+<x-layout title="Catalogue | E-Commerce">
  
     <div class="d-flex">
     <x-Sidebar photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>
@@ -8,18 +8,43 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahkan Category</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahkan Catalogue</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>    
           <div class="modal-body">
           
-            <form action="http://localhost/laravel_E-Commerce/public/category/add-category" method="POST">
+            <form action="http://localhost/laravel_E-Commerce/public/catalogue/add-catalogue" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama</label>
-                  <input type="text" class="form-control" name="category">
+                  <input type="text" class="form-control" name="name">
                 </div>
     
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Description</label>
+                  <input type="text" class="form-control" name="product_description">
+                </div>
+
+                <div class="dropdown">
+                    <label for="city-select">Category:</label>
+                    <select class="form-control" id="city-select" name="categories_id">
+                        <option value="">Select a category</option>
+                        @foreach ($category as $category)
+                            <option value="{{ $category->id }}">{{ $category->category }}</option>
+                        @endforeach
+                    </select>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Harga</label>
+                    <input type="number" class="form-control" name="price">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Stock</label>
+                    <input type="text" class="form-control" name="stock">
+                  </div>
+
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-outline-success">Submit</button>
@@ -47,7 +72,7 @@
     
         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-success mb-1 mt-3"><i class="fas fa-user-plus"></i> Add New</button>
         
-        <form action="http://localhost/laravel_E-Commerce/public/category" method="GET" class="col-md-9 mt-3">
+        <form action="http://localhost/laravel_E-Commerce/public/product" method="GET" class="col-md-9 mt-3">
           <div class="mb-3 d-flex">
             <i class="fas fa-search mt-2 me-3"></i>
             <input type="search" name="search" class="form-control col-md-5" placeholder="Type here">
@@ -65,22 +90,23 @@
             </thead>
             <tbody>  
               @php
-              $counter = ($category->currentPage() - 1) * $category->perPage() + 1;
+              $counter = ($product->currentPage() - 1) * $product->perPage() + 1;
                 @endphp     
-               @foreach ($category as $index => $item)
+               @foreach ($product as $index => $item)
                <tr>
                 <th scope="row">{{ $counter++ }}</th>
-                <td>{{$item->category}}</td>
+                <td>{{$item->name}}</td>
                 <td>
-                <a href="http://localhost/laravel_E-Commerce/public/category/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
-                <a href="http://localhost/laravel_E-Commerce/public/category/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
+                <a href="http://localhost/laravel_E-Commerce/public/product/{{$item->id}}" class="me-1 text-warning fw-bold text-decoration-none">Open</a>
+                <a href="http://localhost/laravel_E-Commerce/public/product/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
+                <a href="http://localhost/laravel_E-Commerce/public/product/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
                 <td>
               </tr>
               @endforeach
             </tbody>
           </table>
     
-          {{$category->links()}}
+          {{$product->links()}}
     </div>
     </div>
     

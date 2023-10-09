@@ -1,8 +1,8 @@
-<x-layout title="Edit Category | Jelajah Nusantara">
+<x-layout title="Edit Category | E-Commerce">
    
     <div class="container col-md-5">
       @foreach ( $category as $item)
-      <form action="http://localhost/laravel_katalogue/public/category/edit-store/{{$category->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
+      <form action="http://localhost/laravel_E-Commerce/public/category/edit-store/{{$category->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
         @csrf @method('put')
         @endforeach
         <h3> Form Edit Category </h3>

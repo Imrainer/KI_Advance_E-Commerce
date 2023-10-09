@@ -5,9 +5,7 @@ use App\Http\Controllers\WEB\UserControllers;
 use App\Http\Controllers\WEB\AuthControllers;
 use App\Http\Controllers\WEB\AdminControllers;
 use App\Http\Controllers\WEB\MonitoringControllers;
-use App\Http\Controllers\WEB\CatalogueControllers;
-use App\Http\Controllers\WEB\ProvinceControllers;
-use App\Http\Controllers\WEB\CityControllers;
+use App\Http\Controllers\WEB\ProductControllers;
 use App\Http\Controllers\WEB\CategoryControllers;
 use App\Http\Controllers\WEB\CarouselControllers;
 /*
@@ -44,29 +42,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/delete/{id}',[AdminControllers::class, 'delete']);
 });
 
-Route::prefix('catalogue')->group(function () {
-    Route::get('/', [CatalogueControllers::class, 'index']);
-    Route::get('/{id}',[CatalogueControllers::class, 'byId']);
-    Route::post('/add-catalogue',[CatalogueControllers::class, 'create']);
-    Route::get('/edit/{id}',[CatalogueControllers::class, 'editpage']);
-    Route::put('/edit-store/{id}',[CatalogueControllers::class, 'edit']);
-    Route::get('/delete/{id}',[CatalogueControllers::class, 'delete']);
-});
-
-Route::prefix('province')->group(function () {
-    Route::get('/', [ProvinceControllers::class, 'index']);
-    Route::post('/add-province',[ProvinceControllers::class, 'register']);
-    Route::get('/edit/{id}',[ProvinceControllers::class, 'editpage']);
-    Route::put('/edit-store/{id}',[ProvinceControllers::class, 'edit']);
-    Route::get('/delete/{id}',[ProvinceControllers::class, 'delete']);
-});
-
-Route::prefix('city')->group(function () {
-    Route::get('/', [CityControllers::class, 'index']);
-    Route::post('/add-city',[CityControllers::class, 'create']);
-    Route::get('/edit/{id}',[CityControllers::class, 'editpage']);
-    Route::put('/edit-store/{id}',[CityControllers::class, 'edit']);
-    Route::get('/delete/{id}',[CityControllers::class, 'delete']);
+Route::prefix('product')->group(function () {
+    Route::get('/', [ProductControllers::class, 'index']);
+    Route::get('/{id}',[ProductControllers::class, 'byId']);
+    Route::post('/add-catalogue',[ProductControllers::class, 'create']);
+    Route::get('/edit/{id}',[ProductControllers::class, 'editpage']);
+    Route::put('/edit-store/{id}',[ProductControllers::class, 'edit']);
+    Route::get('/delete/{id}',[ProductControllers::class, 'delete']);
 });
 
 Route::prefix('carousel')->group(function () {

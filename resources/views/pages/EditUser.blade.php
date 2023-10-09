@@ -1,8 +1,8 @@
-<x-layout title="Edit User | Jelajah Nusantara">
+<x-layout title="Edit User | E-Commerce">
    
     <div class="container col-md-5">
       @foreach ( $data as $item)
-      <form action="http://localhost/laravel_katalogue/public/user/edit-store/{{$data->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
+      <form action="http://localhost/laravel_E-Commerce/public/user/edit-store/{{$data->id}}" method="POST" enctype="multipart/form-data" class="card p-3 mt-3">
         @csrf @method('put')
         @endforeach
         <h3> Form Edit User </h3>

@@ -1,4 +1,4 @@
-<x-layout title="Monitoring | Jelajah Nusantara">
+<x-layout title="Monitoring | E-Commerce">
 <style>
 .dark_blue{
     background-color:  rgb(16, 23, 41);
@@ -34,25 +34,11 @@
 
 <div class="d-flex ms-5 mt-3">
 <div class="card border-primary mb-3 shadow col-md-5" style="max-width: 18rem;">
-    <div class="card-header text-center dark_blue bg-gradient text-light ">Catalogue</div>
+    <div class="card-header text-center dark_blue bg-gradient text-light ">Product</div>
     <div class="card-body">
-        <h1 class="card-title text-center">{{$catalogueCount}}</h1>
+        <h1 class="card-title text-center">{{$productCount}}</h1>
     </div>
     </div>
-
-    <div class="card border-primary mb-3 shadow mx-5 col-md-5" style="max-width: 18rem;">
-        <div class="card-header text-center dark_blue bg-gradient text-light ">Province</div>
-        <div class="card-body">
-            <h1 class="card-title text-center">{{$provinceCount}}</h1>
-        </div>
-        </div>
-
-        <div class="card border-primary mb-3 shadow col-md-5" style="max-width: 18rem;">
-            <div class="card-header text-center dark_blue bg-gradient text-light ">City</div>
-            <div class="card-body">
-                <h1 class="card-title text-center">{{$cityCount}}</h1>
-            </div>
-            </div>
 </div>
 
 </div>

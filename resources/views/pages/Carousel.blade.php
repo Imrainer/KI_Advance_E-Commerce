@@ -1,4 +1,4 @@
-<x-layout title="Carousel | Jelajah Nusantara">
+<x-layout title="Carousel | E-Commerce">
  
     <div class="d-flex">
     <x-Sidebar photo="{{$admin->photo}}" name="{{$admin->name}}"></x-Sidebar>
@@ -13,7 +13,7 @@
           </div>    
           <div class="modal-body">
           
-            <form action="http://localhost/laravel_katalogue/public/carousel/add-carousel" method="POST" enctype="multipart/form-data">
+            <form action="http://localhost/laravel_E-Commerce/public/carousel/add-carousel" method="POST" enctype="multipart/form-data">
               @csrf
                  
                 <div class="mb-3">
@@ -22,11 +22,11 @@
                 </div>
     
                 <div class="dropdown">
-                  <label for="catalogue-select">Catalogue:</label>
-                  <select class="form-control" id="catalogue-select" name="catalogue_id">
-                      <option value="">Select a catalogue</option>
-                      @foreach ($catalogue as $catalogue)
-                          <option value="{{ $catalogue->id }}">{{ $catalogue->name }}</option>
+                  <label for="catalogue-select">Product:</label>
+                  <select class="form-control" id="catalogue-select" name="product_id">
+                      <option value="">Select a Product</option>
+                      @foreach ($product as $product)
+                          <option value="{{ $product->id }}">{{ $product->name }}</option>
                       @endforeach
                   </select>
               </div>
@@ -58,7 +58,7 @@
     
         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-success mb-1 mt-3"><i class="fas fa-user-plus"></i> Add New</button>
         
-        <form action="http://localhost/laravel_katalogue/public/carousel" method="GET" class="col-md-9 mt-3">
+        <form action="http://localhost/laravel_E-Commerce/public/carousel" method="GET" class="col-md-9 mt-3">
           <div class="mb-3 d-flex">
             <i class="fas fa-search mt-2 me-3"></i>
             <input type="search" name="search" class="form-control col-md-5" placeholder="Type here">
@@ -71,7 +71,7 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Foto</th>
-                <th scope="col">Catalogue</th>
+                <th scope="col">Product</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -83,10 +83,10 @@
                <tr>
                 <th scope="row">{{ $counter++ }}</th>
                 <td> <img src="{{ asset ('storage/' . $item->photo) }}"  class="" width="40px" alt="Foto Carousel "></td>
-                <td>{{$item->catalogue->name}}</td>
+                <td>{{$item->product->name}}</td>
                 <td>
-                <a href="http://localhost/laravel_katalogue/public/carousel/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
-                <a href="http://localhost/laravel_katalogue/public/carousel/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
+                <a href="http://localhost/laravel_E-Commerce/public/carousel/edit/{{$item->id}}" class="me-1 fas fa-pen text-primary text-decoration-none"></a>
+                <a href="http://localhost/laravel_E-Commerce/public/carousel/delete/{{$item->id}}" class="ms-1 fas fa-trash text-danger"></a>  
                 <td>
               </tr>
               @endforeach
