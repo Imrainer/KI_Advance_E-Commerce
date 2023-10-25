@@ -42,44 +42,44 @@ class ProductControllers extends ApiController
 
     //Menampilkan Product yang sedang trend
     public function byreview()
-    {   $product = Product::with('photoCarousel','review')->get();
-
+    {
+        $product = Product::with('photoCarousel', 'review')->get();
+    
         $productsWithAverageReviewScore = [];
-
-        $formattedProduct = $product->map(function ($product) {
-
+    
+        $formattedProduct = $product->map(function ($product) use (&$productsWithAverageReviewScore) {
+    
             $product->created_at_formatted = date('Y-m-d H:i:s', strtotime($product->created_at));
             $product->updated_at_formatted = date('Y-m-d H:i:s', strtotime($product->updated_at));
-
+    
             $photo = $product->photo_thumbnail;
             if ($photo === null) {
-                $product->photo_thumbnail= null;
+                $product->photo_thumbnail = null;
             } else {
                 $product->photo_thumbnail = 'https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/storage/' . $photo;
             }
-
+    
             $categoryName = Categories::where('id', $product->categories_id)->value('category');
             $product->categories_name = $categoryName;
-
-            
-        $productsWithAverageReviewScore[] = [
-            'product' => $product,
-            'average_review_score' => $averageReviewScore,
-        ];
-
+    
+            // Menghitung nilai rata-rata skor ulasan
+            $averageReviewScore = $product->review->avg('star');
+    
+            $productsWithAverageReviewScore[] = [
+                'product' => $product,
+                'average_review_score' => $averageReviewScore,
+            ];
+        });
+    
         usort($productsWithAverageReviewScore, function ($a, $b) {
             return $b['average_review_score'] <=> $a['average_review_score'];
         });
-
+        
         $sortedProducts = array_column($productsWithAverageReviewScore, 'product');
-
-        $highestRatedProduct = $productsWithAverageReviewScore[0]['product'];
-
-
-         });
-
-        return Api::createApi(200, 'success', $highestRatedProduct);
+    
+        return Api::createApi(200, 'success', $sortedProducts);
     }
+    
 
     // <!--MENAMPILKAN CATALOGUE BY ID--!>
     public function byId($uuid)

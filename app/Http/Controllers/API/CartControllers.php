@@ -16,29 +16,41 @@ class CartControllers extends ApiController
 {
   // <!--MENAMPILKAN PRODUCT--!>
   public function read()
-  {   $userId = Auth::user()->id;
+  {
+      $userId = Auth::user()->id;
       $cart = Cart::where('created_by', $userId)->get();
- 
-     $formattedCart = $cart->map(function ($cart) {
-
-         $cart->created_at_formatted = date('Y-m-d H:i:s', strtotime($cart->created_at));
-         $cart->updated_at_formatted = date('Y-m-d H:i:s', strtotime($cart->updated_at));
-
-         $photo = $cart->photo_thumbnail;
-         if ($photo === null) {
-             $cart->photo_thumbnail= null;
-         } else {
-             $cart->photo_thumbnail = 'https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/storage/' . $photo;
-         }
-
-        //  $categoryName = Cart::where('id', $cart->categories_id)->value('category');
-        //  $cart->categories_name = $categoryName;
-
-         return $cart;
-     });
-
-     return Api::createApi(200, 'success', $cart);
- }
+  
+      $totalPrice = 0; // Inisialisasi total harga
+  
+      $formattedCart = $cart->map(function ($cart) use (&$totalPrice) {
+          $cart->created_at_formatted = date('Y-m-d H:i:s', strtotime($cart->created_at));
+          $cart->updated_at_formatted = date('Y-m-d H:i:s', strtotime($cart->updated_at));
+  
+          $photo = $cart->photo_thumbnail;
+          if ($photo === null) {
+              $cart->photo_thumbnail = null;
+          } else {
+              $cart->photo_thumbnail = 'https://magang.crocodic.net/ki/Rainer/KI_Advance_E-Commerce/public/storage/' . $photo;
+          }
+  
+          $productName = Product::where('id', $cart->product_id)->value('name');
+          $cart->product_name = $productName;
+  
+          if (is_numeric($cart->product->price)) {
+            $totalPrice += $cart->product->price;
+        } else {
+            // Tangani kasus ketika $cart->product->price bukan numerik
+            // Misalnya, Anda dapat mengabaikan nilai ini atau menangani kesalahan sesuai kebutuhan.
+        }
+          return $cart;
+      });
+  
+      return Api::createApi(200, 'success', [
+          'cart' => $formattedCart,
+          'totalPrice' => $totalPrice, // Menambahkan total harga ke respons
+      ]);
+  }
+  
 
 
   // <!---MEMBUAT PRODUCT---!>
