@@ -81,9 +81,9 @@ class ProductControllers extends ApiController
     }
     
 
-    // <!--MENAMPILKAN CATALOGUE BY ID--!>
+    // <!--MENAMPILKAN PRODUCT BY ID--!>
     public function byId($uuid)
-    {   $product = Product::with('photoCarousel','review')->first();
+    {   $product = Product::with('photoCarousel','review')->where('id', $uuid)->firstOrFail();
 
         if (!$product) {
             return Api::createApi(404, 'product not found');
